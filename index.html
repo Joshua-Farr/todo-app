@@ -22,57 +22,23 @@
       </div>
 
       <input class="input-fld" id="input-fld" placeholder="Create a new todo...">
-      <ul class="todo-list" id="todo-list">
-<!-- 
-        <div>
-          <li class="to-do-item">
-            <button class="select-item-btn"></button>
-            <p>Pickup groceries</p>
-            <img src="./images/icon-cross.svg" class="x" alt="cancel">
-          </li>
-        </div>
+      <ul class="todo-list" id="todo-list"></ul>
 
-        <div>
-          <li class="to-do-item">
-            <button class="select-item-btn">✓</button>
-            <p>Pickup groceries</p>
-            <img src="./images/icon-cross.svg" class="x" alt="cancel">
-          </li>
-        </div>
-
-        <div>
-          <li class="to-do-item">
-            <button class="select-item-btn">✓</button>
-            <p>Pickup groceries</p>
-            <img src="./images/icon-cross.svg" class="x" alt="cancel">
-          </li>
-        </div>
-
-        <div>
-          <li class="to-do-item">
-            <button class="select-item-btn">✓</button>
-            <p>Pickup groceries</p>
-            <img src="./images/icon-cross.svg" class="x" alt="cancel">
-          </li>
-        </div> -->
-
-      </ul>
-
-      <!-- Add dynamic number --> 
+      <!-- Dynamic Todo list is generated here --> 
       
-      <div class="bottom-text">
+      <div class="bottom-text" id="bottom-text">
         <p><span id="num-items-left">0</span> items left</p>
-        <button class="clear-completed">Clear Completed</button>
+        <button class="clear-completed" id="clear-completed">Clear Completed</button>
       </div>
 
       <div class="filter-view" id="filter-view">
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button id="filter-show-all">All</button>
+        <button id="filter-active">Active</button>
+        <button id="filter-completed">Completed</button>
       </div>
 
 
-      <p class="final-p">Drag and drop to reorder list</p>
+      <p class="final-p" class="final-p">Drag and drop to reorder list</p>
     </main>
   </body>
   <script src="script.js"></script>

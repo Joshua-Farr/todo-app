@@ -1,109 +1,130 @@
 const inputFieldText = document.getElementById("input-fld");
-const todoList = document.getElementById("todo-list");
 const completeBtn = document.getElementById("select-item-btn");
-
 
 let todoListArray = [];
 let numItemsLeftToDo = 0;
 
+
+
 inputFieldText.addEventListener("keydown", function(e){
-    if(e.key === "Enter" && inputFieldText.value != ""){
+    if(e.key === "Enter" && inputFieldText.value){
         addTodoItem(inputFieldText.value);
         clearInputField();
         updateNumLeft();
-
     }
 });
 
-
 document.addEventListener("click", function(e){
     if(e.target.id === "select-item-btn"){
-        console.log("Button selected!");
-        e.target.classList.toggle("completed");
+        markAsCompleted(e);
     } else if(e.target.id === "delete-btn"){
-        console.log("Button deleted!");
-        e.target.parentElement.remove();
-        numItemsLeftToDo--;
-        updateNumLeft();
+        removeItemFromTodoList(e);
+    }else if(e.target.id === "clear-completed"){
+        removeAllCompleted(e);
+    }else if(e.target.id === "filter-completed"){
+        filterCompleted();
+    }else if(e.target.id === "filter-active"){
+        filterActive();
+    }else if (e.target.id === "filter-show-all"){
+        filterShowAll();
     }
+       
 })
 
-
-
 function addTodoItem(todoItem){
-    todoList.innerHTML += `<li class="to-do-item">
+    const todoList = document.getElementById("todo-list");
+
+    todoList.innerHTML += `<li class="to-do-item active">
                                 <button class="select-item-btn" id="select-item-btn"></button>
-                                <p>${todoItem}</p>
+                                <p id="todo-text" class="">${todoItem}</p>
                                 <img src="./images/icon-cross.svg" alt="delete" id="delete-btn">
                             </li>`
     numItemsLeftToDo++;
 }
 
-
-// console.log("Button exists!")
-// completeBtn.addEventListener("click", function(){
-//     console.log("Completed!!");
-// })
-
-// function addTodoItem(todoItem){
-//     todoListArray.unshift(
-//         { 
-//             html: 
-//                 `<li class="to-do-item">
-//                     <button class="select-item-btn" id="select-item-btn"></button>
-//                     <p>${todoItem}</p>
-//                     <img src="./images/icon-cross.svg" alt="delete" id="delete-btn">
-
-//                 </li>`,
-//             done: false
-//         });
-// }
-
 function clearInputField(){
     inputFieldText.value = "";
 }
 
-// function renderTodoList(todoListArr){
-//     todoList.innerHTML = "";
-//     todoListArr.forEach(function(todo){
-//         todoList.innerHTML += todo.html;
-//     })
-// }
-
-
-function addFunctionality(listitem){
-    const closeBtn = listItem.querySelectorAll(".close");
-    closeBtn.addEventListener("click",  )
-
-}
-
 function updateNumLeft(){
     document.getElementById("num-items-left").textContent = numItemsLeftToDo;
+    renderMenus();
 }
 
-function markAsCompleted(todoItem){
-    // Code to add class "completed" to inner paragraph element
+function markAsCompleted(e){ // Code to add class "completed" to inner paragraph element and button
+    e.target.classList.toggle("completed");
+    e.target.nextElementSibling.classList.toggle("completed");
+
+    e.target.parentElement.classList.toggle("completed");
+    e.target.parentElement.classList.toggle("active");
+
+    // Theres gotta be a better way to do all of this...
 }
 
-function removeItemFromTodoList(todoListArr){
-    todoListArr.forEach(function(todo){
-        todoListArr.filter(function(){
-            todo.done;
-        })
-    })
+function removeItemFromTodoList(e){
+    e.target.parentElement.remove();
+    numItemsLeftToDo--;
+    updateNumLeft();
+}
 
-    renderTodoList();
+function removeAllCompleted(e){
+    const completedTasks = document.getElementsByClassName("to-do-item completed");
+    //console.log("There are this many items completed:" + completedTasks.length);
+    while(completedTasks.length > 0){
+        completedTasks[0].remove();
+        numItemsLeftToDo--;     
+    }
+    updateNumLeft();
 }
 
 
-function sortActive(){
-// Code to hide completed (with class compelted)
+function filterActive(){
+    const completedTasks = document.getElementsByClassName("to-do-item completed");
+    filterShowAll(); // Show all to prevent hidden tasks from being filtered out 
 
-    renderTodoList(todoListArray);
+    for(let i=0; i<completedTasks.length; i++){
+        if(completedTasks[i].style.display === "none"){
+            completedTasks[i].style.display = "flex";
+        } else{
+            completedTasks[i].style.display = "none";
+        }
+    }
 }
 
-function sortCompleted(){
-    // Code to hide active (with class active)
+function filterCompleted(){
+    const completedTasks = document.getElementsByClassName("to-do-item active");
+    filterShowAll();
+
+    for(let i=0; i<completedTasks.length; i++){
+        if(completedTasks[i].style.display === "none"){
+            completedTasks[i].style.display = "flex";
+        } else{
+            completedTasks[i].style.display = "none";
+        }
+    }
     
-    renderTodoList(todoListArray);
 }
+
+function filterShowAll(){
+    const completedTasks = document.getElementsByClassName("to-do-item");
+
+    for(let i=0; i<completedTasks.length; i++){
+        if(completedTasks[i].style.display === "none"){
+            completedTasks[i].style.display = "flex";
+        }
+    }
+
+}
+
+function renderMenus(){
+    if(numItemsLeftToDo === 0){
+        document.getElementById("bottom-text").style.display = "none";
+        document.getElementById("filter-view").style.display = "none";
+    }else{
+        document.getElementById("bottom-text").style.display = "flex";
+        document.getElementById("filter-view").style.display = "block";
+    }
+   
+}
+
+renderMenus();
