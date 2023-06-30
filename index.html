@@ -16,44 +16,54 @@
 </head>
   <body>
     <main>
-      <div>
+      <div class="header">
         <h1>Todo</h1>
-        <img src="./images/icon-sun.svg" alt="Icon of the sun">
+        <!-- <img src="./images/icon-moon.svg" alt="Icon of the sun"> -->
       </div>
 
       <input class="input-fld" id="input-fld" placeholder="Create a new todo...">
       <ul class="todo-list" id="todo-list">
+<!-- 
+        <div>
+          <li class="to-do-item">
+            <button class="select-item-btn"></button>
+            <p>Pickup groceries</p>
+            <img src="./images/icon-cross.svg" class="x" alt="cancel">
+          </li>
+        </div>
 
         <div>
           <li class="to-do-item">
-            <input type="radio">
-            <p>Jog around the park 3x</p>
-            <img src="./images/icon-cross.svg" alt="">
-          </li>
-
-          <li class="to-do-item">
-            <input type="radio">
-            <p>10 minutes meditation</p>
-            <img src="./images/icon-cross.svg" alt="">
-          </li>
-
-          <li class="to-do-item">
-            <input type="radio">
-            <p>Read for 1 hour</p>
-            <img src="./images/icon-cross.svg" alt="">
-          </li>
-
-          <li class="to-do-item">
-            <input type="radio">
+            <button class="select-item-btn">✓</button>
             <p>Pickup groceries</p>
-            <img src="./images/icon-cross.svg" alt="">
+            <img src="./images/icon-cross.svg" class="x" alt="cancel">
           </li>
         </div>
+
+        <div>
+          <li class="to-do-item">
+            <button class="select-item-btn">✓</button>
+            <p>Pickup groceries</p>
+            <img src="./images/icon-cross.svg" class="x" alt="cancel">
+          </li>
+        </div>
+
+        <div>
+          <li class="to-do-item">
+            <button class="select-item-btn">✓</button>
+            <p>Pickup groceries</p>
+            <img src="./images/icon-cross.svg" class="x" alt="cancel">
+          </li>
+        </div> -->
 
       </ul>
 
       <!-- Add dynamic number --> 
-      <p><span id="num-items-left"></span>items left</p>
+      
+      <div class="bottom-text">
+        <p><span id="num-items-left">0</span> items left</p>
+        <button class="clear-completed">Clear Completed</button>
+      </div>
 
       <div class="filter-view" id="filter-view">
         <button>All</button>
@@ -61,9 +71,9 @@
         <button>Completed</button>
       </div>
 
-      Clear Completed
 
-      <p>Drag and drop to reorder list</p>
+      <p class="final-p">Drag and drop to reorder list</p>
     </main>
   </body>
+  <script src="script.js"></script>
 </html>
