@@ -238,6 +238,18 @@ p.completed{
     display: none;
 }
 
-/* .close{
-  border: 2px solid red;
-} */
+p.hidden{
+  display: none;
+}
+
+.is-dragging{
+  color: white;
+  background-color: var(--light-grayish-blue1);
+  border-radius: 5px;
+  border: none;
+}
+
+.over{
+  opacity: .5;
+  border-radius: 5px;
+}
