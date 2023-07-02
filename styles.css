@@ -138,7 +138,6 @@ ul{
 }
 
 li{
-    color: var(--dark-grayish-blue);
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -155,9 +154,8 @@ li{
 li p{
     margin-right: auto;
     padding-left: 10px;
-    font-size: .875rem;
-    vertical-align: middle;
-    
+    font-size: .875rem;    
+    margin-top: 0px;
 }
 
 
@@ -232,6 +230,7 @@ button.completed{
 
 p.completed{
     text-decoration: line-through;
+    color: var(--dark-grayish-blue);
 }
 
 .hidden{
